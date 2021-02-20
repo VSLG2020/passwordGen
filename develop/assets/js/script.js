@@ -11,10 +11,10 @@ var numAnswer = false;
 
 var userInput = "";
 var ranPassGen;
-
+//var charlength = "";
 
 //generator function
-//password length
+
 function generatePassword() {
 
   var lowAnswer = false;
@@ -23,22 +23,23 @@ function generatePassword() {
   var numAnswer = false;
   var userInput = "";
 
-  //number count
-  var length = window.prompt('How long will you like your password? Pick between 8 through 128'); {
-    if (length >= 8 && length < 128) {
+  ////password length
+  var charlength = window.prompt('How long will you like your password? Pick between 8 through 128'); {
+    if (charlength >= 8 && charlength < 128) {
       var specAnswer = window.confirm('Would you like to include special characters? ex: @*+!');
     }
     else {
       window.alert('Please enter a number between 8-128 to continue.');
-      return
+      // return
     }
     if (specAnswer) {
       specAnswer = true;
       userInput = userInput + specialChar;
-    }else{
-      specAnswer =false;
-      userInput = userInput - specialChar;
     }
+    // else{
+    //   specAnswer =false;
+    //   userInput = userInput - specialChar;
+    // }
     //console.log(userInput);
   }
 
@@ -49,10 +50,11 @@ function generatePassword() {
       upAnswer = true;
       userInput = userInput + upperCase;
 
-    }else{
-      upAnswer = false;
-      userInput = userInput - upperCase;
     }
+    // else{
+    //   upAnswer = false;
+    //   userInput = userInput - upperCase;
+    // }
     //console.log(userInput);
   }
   //lowerCase
@@ -61,10 +63,11 @@ function generatePassword() {
       lowAnswer = true;
       userInput = userInput + lowerCase;
 
-    }else{
-      lowAnswer = false;
-      userInput = userInput - lowerCase;
     }
+    //else{
+    //   lowAnswer = false;
+    //   userInput = userInput - lowerCase;
+    // }
     //console.log(userInput);
   }
 
@@ -75,39 +78,41 @@ function generatePassword() {
       numAnswer = true;
       userInput = userInput + numberReq;
 
-    } else{
-      numAnswer = false;
-      userInput = userInput - numberReq;
+      // } else{
+      //   numAnswer = false;
+      //   userInput = userInput - numberReq;
     }
-   // console.log(userInput);
+    // console.log(userInput);
   }
 
   // must choose an option or startover
 
-if (numAnswer !=true && specAnswer !=true && upAnswer !=true && lowAnswer !=true) {
-  window.alert("You must select at least one option! Please try again.");
-  generatePassword();
+  if (numAnswer != true && specAnswer != true && upAnswer != true && lowAnswer != true) {
+    window.alert("You must select at least one option! Please try again.");
+
+    generatePassword();
+  }
+
+ // set ranPassGen to an empty string
+ var ranPassGen = ""
+
+ // for loop to select a list of characters that are randomly chosen from the uInput character preferences AND as long as "var length"
+ for (var i = 0; i < charlength; i++ ) {
+ var random = Math.floor(Math.random() * userInput.length);
+
+ ranPassGen = ranPassGen + userInput.charAt(random);
 }
 
- ranPassGen = ""
+ // display random password
+ return ranPassGen;
 
-for (var i = 0; i < length; i++) {
-  var random = Math.floor(Math.random() * userInput.length);
-  ranPassGen = ranPassGen + userInput.charAt(random);
-  
-  //random password generated
-  
-  return ranPassGen;
+
 }
-console.log(ranPassGen);
-
-
-}//closing function
 
 
 ///starter code below///
 
-// Get references to the #generate element
+//Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
@@ -116,10 +121,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
-
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword)
-
-
+generateBtn.addEventListener("click", writePassword);
