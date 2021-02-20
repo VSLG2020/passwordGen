@@ -36,10 +36,10 @@ function generatePassword() {
       specAnswer = true;
       userInput = userInput + specialChar;
     }
-    // else{
-    //   specAnswer =false;
-    //   userInput = userInput - specialChar;
-    // }
+    else{
+      specAnswer =false;
+      userInput = userInput - specialChar;
+    }
     //console.log(userInput);
   }
 
@@ -51,10 +51,10 @@ function generatePassword() {
       userInput = userInput + upperCase;
 
     }
-    // else{
-    //   upAnswer = false;
-    //   userInput = userInput - upperCase;
-    // }
+    else{
+      upAnswer = false;
+      userInput = userInput - upperCase;
+    }
     //console.log(userInput);
   }
   //lowerCase
@@ -64,10 +64,10 @@ function generatePassword() {
       userInput = userInput + lowerCase;
 
     }
-    //else{
-    //   lowAnswer = false;
-    //   userInput = userInput - lowerCase;
-    // }
+    else{
+      lowAnswer = false;
+      userInput = userInput - lowerCase;
+    }
     //console.log(userInput);
   }
 
@@ -78,9 +78,9 @@ function generatePassword() {
       numAnswer = true;
       userInput = userInput + numberReq;
 
-      // } else{
-      //   numAnswer = false;
-      //   userInput = userInput - numberReq;
+      } else{
+        numAnswer = false;
+        userInput = userInput - numberReq;
     }
     // console.log(userInput);
   }
@@ -93,17 +93,17 @@ function generatePassword() {
     generatePassword();
   }
 
- // set ranPassGen to an empty string
+
  var ranPassGen = ""
 
- // for loop to select a list of characters that are randomly chosen from the uInput character preferences AND as long as "var length"
+ 
  for (var i = 0; i < charlength; i++ ) {
  var random = Math.floor(Math.random() * userInput.length);
 
  ranPassGen = ranPassGen + userInput.charAt(random);
 }
 
- // display random password
+ // random password returned here
  return ranPassGen;
 
 
