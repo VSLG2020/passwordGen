@@ -1,6 +1,6 @@
 // Assignment code here
-var lowercase = "abcdefghijklmnopqrstuvwxyz";
-var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+var upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var specialChar = '!@#$%^&*?><:~`;/{}][]|+-)(';
 var numberReq = "0123456789";
 
@@ -9,9 +9,103 @@ var upAnswer = false;
 var specAnswer = false;
 var numAnswer = false;
 
-var userChoices = "";
-var randomPassword;
+var userInput = "";
+var ranPassGen;
 
+
+//generator function
+//password length
+function generatePassword() {
+
+  var lowAnswer = false;
+  var upAnswer = false;
+  var specAnswer = false;
+  var numAnswer = false;
+  var userInput = "";
+
+  //number count
+  var charlength = window.prompt('How long will you like your password? Pick between 8 through 128'); {
+    if (charlength >= 8 && charlength < 128) {
+      var specAnswer = window.confirm('Would you like to include special characters? ex: @8+!');
+    }
+    else {
+      window.alert('Please enter a number between 8-128 to continue.');
+      return
+    }
+    if (specAnswer) {
+      specAnswer = true;
+      userInput = userInput + specialChar;
+    }else{
+      specAnswer =false;
+      userInput = userInput - specialChar;
+    }
+    //console.log(userInput);
+  }
+
+  //upperCase
+
+  upAnswer = window.confirm('Would you like UPPERCASE letters in your password?'); {
+    if (upAnswer) {
+      upAnswer = true;
+      userInput = userInput + upperCase;
+
+    }else{
+      upAnswer = false;
+      userInput = userInput - upperCase;
+    }
+    //console.log(userInput);
+  }
+  //lowerCase
+  lowAnswer = window.confirm('Would you like lowercase letters in your password?'); {
+    if (lowAnswer) {
+      lowAnswer = true;
+      userInput = userInput + lowerCase;
+
+    }else{
+      lowAnswer = false;
+      userInput = userInput - lowerCase;
+    }
+    //console.log(userInput);
+  }
+
+  //numbers
+
+  numAnswer = window.confirm('Would you like numbers in your password?'); {
+    if (numAnswer) {
+      numAnswer = true;
+      userInput = userInput + numberReq;
+
+    } else{
+      numAnswer = false;
+      userInput = userInput - numberReq;
+    }
+   // console.log(userInput);
+  }
+
+  // must choose an option or startover
+
+if (numberReq !=true && specAnswer !=true && upAnswer !=true && lowAnswer !=true) {
+  window.alert("You must select at least one option! Please try again.");
+  generatePassword();
+}
+
+ ranPassGen = ""
+
+for (var i = 0; i < charlength; i++) {
+  var random = Math.floor(Math.random() * userInput.charlength);
+  ranPassGen = ranPassGen + userInput.charAt(random);
+  
+  //random password generated
+  
+  return ranPassGen;
+}
+console.log(userInput, ranPassGen);
+
+
+}//closing function
+
+
+///starter code below///
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -28,29 +122,4 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword)
 
-//password length
-function generatePassword() {
 
-var lowAnswer = false;
-var upAnswer = false;
-var specAnswer = false;
-var numAnswer = false;
-var userChoices = "";
-
-//number count
-  var charlength = window.prompt('How long will you like your password? Pick between 8 through 128');{
-      if (charlength >= 8 && charlength < 128) {
-        var specAnswer = window.confirm('Would you like to include special characters? ex: @8+!');
-      }
-      else {
-        window.alert('Please enter a number between 8-128 to continue.')
-      }
-    }
-  };
-
-
-  
-
-// var lowercaseReq = window.confirm('Would you like to include lowercase letters?');
-// var uppercaseReq = window.confirm('Would you like to include UPPERCASE letters?');
-// var numberReq = window.confirm('Would you like to include numbers? ex:123');
