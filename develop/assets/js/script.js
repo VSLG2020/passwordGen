@@ -24,9 +24,9 @@ function generatePassword() {
   var userInput = "";
 
   //number count
-  var charlength = window.prompt('How long will you like your password? Pick between 8 through 128'); {
-    if (charlength >= 8 && charlength < 128) {
-      var specAnswer = window.confirm('Would you like to include special characters? ex: @8+!');
+  var length = window.prompt('How long will you like your password? Pick between 8 through 128'); {
+    if (length >= 8 && length < 128) {
+      var specAnswer = window.confirm('Would you like to include special characters? ex: @*+!');
     }
     else {
       window.alert('Please enter a number between 8-128 to continue.');
@@ -84,22 +84,22 @@ function generatePassword() {
 
   // must choose an option or startover
 
-if (numberReq !=true && specAnswer !=true && upAnswer !=true && lowAnswer !=true) {
+if (numAnswer !=true && specAnswer !=true && upAnswer !=true && lowAnswer !=true) {
   window.alert("You must select at least one option! Please try again.");
   generatePassword();
 }
 
  ranPassGen = ""
 
-for (var i = 0; i < charlength; i++) {
-  var random = Math.floor(Math.random() * userInput.charlength);
+for (var i = 0; i < length; i++) {
+  var random = Math.floor(Math.random() * userInput.length);
   ranPassGen = ranPassGen + userInput.charAt(random);
   
   //random password generated
   
   return ranPassGen;
 }
-console.log(userInput, ranPassGen);
+console.log(ranPassGen);
 
 
 }//closing function
